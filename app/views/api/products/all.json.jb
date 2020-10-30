@@ -1,13 +1,7 @@
-json = []
-i = 0
-while i < @products.length
-  product = @products[i]
-
-  products_info = { name: product.name,
-                    price: product.price,
-                    image_url: product.image_url,
-                    description: product.description }
-  json << products_info
-  i = i + 1
+@products.map do |product|
+  { id: product.id,
+    name: product.name,
+    price: product.price,
+    image_url: product.image_url,
+    description: product.description }
 end
-return json
