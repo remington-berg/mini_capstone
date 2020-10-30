@@ -21,7 +21,7 @@ class Api::ProductsController < ApplicationController
 
   def single
     user_input = params["id"]
-    @output = Product.find_by(id: user_input.to_i)
+    @product = Product.find_by(id: user_input.to_i)
     render "single.json.jb"
   end
 end
