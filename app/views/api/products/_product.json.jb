@@ -7,4 +7,4 @@
   tax: product.tax,
   total: product.total,
   supplier: product.supplier,
-  image: product.image }
+  images: product.images }
