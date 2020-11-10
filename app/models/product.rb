@@ -4,13 +4,13 @@ class Product < ApplicationRecord
   # validates :description, length: { minimum: 10, maximum: 500 }
   belongs_to :supplier
   has_many :images
-  # def supplier
-  #   Supplier.find_by(id: supplier_id)
-  # end
+  def supplier
+    Supplier.find_by(id: supplier_id)
+  end
 
-  # def image
-  #   Image.where(product_id: id)
-  # end
+  def image
+    Image.where(product_id: id)
+  end
 
   def is_discounted?
     price <= 10
