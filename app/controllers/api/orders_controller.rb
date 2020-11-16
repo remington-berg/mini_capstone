@@ -1,4 +1,6 @@
 class Api::OrdersController < ApplicationController
+  before_action :authenticate_user
+
   def create
     if current_user
       product = Product.find_by(id: params[:product_id])
@@ -22,16 +24,14 @@ class Api::OrdersController < ApplicationController
   end
 
   def index
-    if current_user
-      @orders = current_user.orders
-      render "index.json.jb"
-    else
-      render json: ["nope."], status: :unauthorized
-    end
+    @orders = current_user.orders
+    render "index.json.jb"
   end
 
   def show
     @order = Order.find_by(id: params[:id])
-    render "show.json.jb"
+    if @order.user_id == current_user.id
+      render "show.json.jb"
+    end
   end
 end
